@@ -8,6 +8,8 @@ import '../engine/fluxy_sandbox.dart';
 import '../engine/stability_console.dart';
 import '../data/code_snippets.dart';
 
+import '../widgets/fluxy_logo.dart';
+
 // ---------------------------------------------------------------------------
 // Playground Page
 // Industry-Standard IDE Interface for Fluxy & Flutter
@@ -362,10 +364,9 @@ class _PlaygroundTopBar extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(Icons.auto_awesome_rounded, color: Color(0xFF6366F1), size: 18),
-          const SizedBox(width: 12),
-          const Text('Fluxy', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, letterSpacing: -0.5)),
-          const Text(' IDE', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey)),
+          const FluxyLogo(size: 20),
+          const SizedBox(width: 8),
+          const Text('IDE', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey)),
           const SizedBox(width: 24),
           _FrameworkTab(mode: FrameworkMode.fluxy, active: frameworkMode == FrameworkMode.fluxy, onSelect: () => onFrameworkChange(FrameworkMode.fluxy)),
           _FrameworkTab(mode: FrameworkMode.flutter, active: frameworkMode == FrameworkMode.flutter, onSelect: () => onFrameworkChange(FrameworkMode.flutter)),
