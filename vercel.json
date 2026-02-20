@@ -1,5 +1,10 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "routes": [
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/favicon.svg", "dest": "/favicon.svg" },
+    { "src": "/icons/(.*)", "dest": "/icons/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
