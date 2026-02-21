@@ -105,7 +105,10 @@ class _PlaygroundPageState extends State<PlaygroundPage> with SingleTickerProvid
   }
 
   void _onShare() {
-     showDialog(context: context, builder: (c) => _ShareDialog(code: codeSignal.value));
+    final baseUrl = Uri.base.origin;
+    final shareUrl = '$baseUrl/playground?snippetId=${activeSnippetId.value}';
+    Clipboard.setData(ClipboardData(text: shareUrl));
+    showDialog(context: context, builder: (c) => _ShareDialog(code: codeSignal.value));
   }
 
   void _copyCode() {
@@ -848,7 +851,7 @@ class _SidebarIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    return Tooltip(message: tooltip, child: GestureDetector(onTap: onTap, child: Container(width: 48, height: 48, child: Center(child: Icon(icon, size: 20, color: isActive ? const Color(0xFF6366F1) : (isDark ? Colors.white38 : Colors.black38))))));
+    return Tooltip(message: tooltip, child: GestureDetector(onTap: onTap, child: SizedBox(width: 48, height: 48, child: Center(child: Icon(icon, size: 20, color: isActive ? const Color(0xFF6366F1) : (isDark ? Colors.white38 : Colors.black38))))));
   }
 }
 

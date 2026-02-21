@@ -3,8 +3,8 @@
   "trailingSlash": false,
   "routes": [
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    { "src": "/favicon.svg", "dest": "/favicon.svg" },
-    { "src": "/icons/(.*)", "dest": "/icons/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/favicon.svg", "dest": "/web/favicon.svg" },
+    { "src": "/icons/(.*)", "dest": "/web/icons/$1" },
+    { "src": "/(.*)", "dest": "/web/index.html" }
   ]
 }
