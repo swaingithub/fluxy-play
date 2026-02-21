@@ -8,8 +8,6 @@ import '../engine/fluxy_sandbox.dart';
 import '../engine/stability_console.dart';
 import '../data/code_snippets.dart';
 
-import '../widgets/fluxy_logo.dart';
-
 // ---------------------------------------------------------------------------
 // Playground Page
 // Industry-Standard IDE Interface for Fluxy & Flutter
@@ -105,10 +103,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> with SingleTickerProvid
   }
 
   void _onShare() {
-    final baseUrl = Uri.base.origin;
-    final shareUrl = '$baseUrl/playground?snippetId=${activeSnippetId.value}';
-    Clipboard.setData(ClipboardData(text: shareUrl));
-    showDialog(context: context, builder: (c) => _ShareDialog(code: codeSignal.value));
+     showDialog(context: context, builder: (c) => _ShareDialog(code: codeSignal.value));
   }
 
   void _copyCode() {
@@ -125,9 +120,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> with SingleTickerProvid
     return Scaffold(
       backgroundColor: isDark ? const Color(0xFF0F0F1A) : Colors.white,
       body: LayoutBuilder(builder: (context, constraints) {
-        if (constraints.maxWidth < 800) {
-          return _buildMobileLayout(isDark);
-        }
+        if (constraints.maxWidth < 800) return _buildMobileLayout(isDark);
         return _buildDesktopLayout(isDark);
       }),
     );
@@ -196,15 +189,12 @@ class _PlaygroundPageState extends State<PlaygroundPage> with SingleTickerProvid
               ),
               // File Explorer Panel
               Fx(() => activeSidebarTab.value == 'snippets' 
-                ? SizedBox(
-                    width: 240, 
-                    child: _SnippetPanel(
-                      isDark: isDark,
-                      activeCategoryId: activeCategoryId,
-                      activeSnippetId: activeSnippetId,
-                      onSnippetSelected: _loadSnippet,
-                    ),
-                  )
+                ? SizedBox(width: 240, child: _SnippetPanel(
+                    isDark: isDark,
+                    activeCategoryId: activeCategoryId,
+                    activeSnippetId: activeSnippetId,
+                    onSnippetSelected: _loadSnippet,
+                  ))
                 : const SizedBox.shrink()),
               // Editor & Preview Split View
               Expanded(
@@ -372,9 +362,10 @@ class _PlaygroundTopBar extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const FluxyLogo(size: 20),
-          const SizedBox(width: 8),
-          const Text('IDE', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey)),
+          const Icon(Icons.auto_awesome_rounded, color: Color(0xFF6366F1), size: 18),
+          const SizedBox(width: 12),
+          const Text('Fluxy', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, letterSpacing: -0.5)),
+          const Text(' IDE', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.grey)),
           const SizedBox(width: 24),
           _FrameworkTab(mode: FrameworkMode.fluxy, active: frameworkMode == FrameworkMode.fluxy, onSelect: () => onFrameworkChange(FrameworkMode.fluxy)),
           _FrameworkTab(mode: FrameworkMode.flutter, active: frameworkMode == FrameworkMode.flutter, onSelect: () => onFrameworkChange(FrameworkMode.flutter)),
@@ -856,7 +847,7 @@ class _SidebarIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    return Tooltip(message: tooltip, child: GestureDetector(onTap: onTap, child: SizedBox(width: 48, height: 48, child: Center(child: Icon(icon, size: 20, color: isActive ? const Color(0xFF6366F1) : (isDark ? Colors.white38 : Colors.black38))))));
+    return Tooltip(message: tooltip, child: GestureDetector(onTap: onTap, child: Container(width: 48, height: 48, child: Center(child: Icon(icon, size: 20, color: isActive ? const Color(0xFF6366F1) : (isDark ? Colors.white38 : Colors.black38))))));
   }
 }
 

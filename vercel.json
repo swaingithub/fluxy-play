@@ -1,11 +1,5 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    { "source": "/favicon.svg", "destination": "/web/favicon.svg" },
-    { "source": "/icons/(.*)", "destination": "/web/icons/$1" },
-    { "source": "/assets/(.*)", "destination": "/web/assets/$1" },
-    { "source": "/(.*).js", "destination": "/web/$1.js" },
-    { "source": "/(.*)", "destination": "/web/index.html" }
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

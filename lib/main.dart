@@ -26,10 +26,6 @@ class FluxyPlaygroundApp extends StatelessWidget {
           ),
           routes: [
             FxRoute(
-              path: '/',
-              builder: (params, args) => const PlaygroundPage(),
-            ),
-            FxRoute(
               path: '/playground',
               builder: (params, args) {
                 final argMap = args as Map<String, dynamic>?;
