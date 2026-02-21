@@ -35,7 +35,9 @@ class _FluxyCodeEditorState extends State<FluxyCodeEditor> {
       if (_gutterScrollController.hasClients) {
         _gutterScrollController.jumpTo(_contentScrollController.offset);
       }
-      if (_isOverlayVisible) _hideOverlay();
+      if (_isOverlayVisible) {
+        _hideOverlay();
+      }
     });
   }
 

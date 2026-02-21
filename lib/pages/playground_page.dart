@@ -125,7 +125,9 @@ class _PlaygroundPageState extends State<PlaygroundPage> with SingleTickerProvid
     return Scaffold(
       backgroundColor: isDark ? const Color(0xFF0F0F1A) : Colors.white,
       body: LayoutBuilder(builder: (context, constraints) {
-        if (constraints.maxWidth < 800) return _buildMobileLayout(isDark);
+        if (constraints.maxWidth < 800) {
+          return _buildMobileLayout(isDark);
+        }
         return _buildDesktopLayout(isDark);
       }),
     );
@@ -194,12 +196,15 @@ class _PlaygroundPageState extends State<PlaygroundPage> with SingleTickerProvid
               ),
               // File Explorer Panel
               Fx(() => activeSidebarTab.value == 'snippets' 
-                ? SizedBox(width: 240, child: _SnippetPanel(
-                    isDark: isDark,
-                    activeCategoryId: activeCategoryId,
-                    activeSnippetId: activeSnippetId,
-                    onSnippetSelected: _loadSnippet,
-                  ))
+                ? SizedBox(
+                    width: 240, 
+                    child: _SnippetPanel(
+                      isDark: isDark,
+                      activeCategoryId: activeCategoryId,
+                      activeSnippetId: activeSnippetId,
+                      onSnippetSelected: _loadSnippet,
+                    ),
+                  )
                 : const SizedBox.shrink()),
               // Editor & Preview Split View
               Expanded(
